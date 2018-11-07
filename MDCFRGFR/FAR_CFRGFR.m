@@ -1,4 +1,4 @@
-function F = FAR_CFRGFR(imagePath,QF)
+function F = FAR_CFRGFR_hide(imagePath,QF)
 
 I_STRUCT = jpeg_read(imagePath);
 %% Set parameters
@@ -12,16 +12,16 @@ I_spatial = blockproc(I_spatial,[8 8],fun)+128;
 
 
 
-% load cor_index_BOWS_CFRGFR_sec.mat;
-% index = creat_index(cor_index_sec);
-% load NR_BOWS_CFRGFR_sec.mat;
-% F = data_process_5(I_spatial,NR_sec,QF);
+load cor_index_BOWS_CFRGFR_sec.mat;
+[index,num] = creat_index(cor_index_sec);
+load NR_BOWS_CFRGFR_sec.mat;
+F = data_process_5(I_spatial,NR_sec,QF,num);
 
 
-load cor_index_BOSS_CFRGFR_sec.mat
-index = creat_index(cor_index_sec);
-load NR_BOSS_CFRGFR_sec.mat
-F = data_process_5(I_spatial,NR_sec,QF);
+% load cor_index_BOSS_CFRGFR_sec.mat
+% [index,num] = creat_index(cor_index_sec);
+% load NR_BOSS_CFRGFR_sec.mat
+% F = data_process_5(I_spatial,NR_sec,QF,num);
 
 F1=GFR(imagePath,QF,index);
 F=[F F1];
